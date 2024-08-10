@@ -14,7 +14,7 @@ You can probably use any label printer or label that is supported by lprint,
 but some [customization](https://github.com/michaelrsweet/lprint/pull/152)
 might be needed.
 
-- DYMO LabelWriter 400
+- DYMO LabelWriter 400/450
 - DYMO 99015 diskette labels: they are the right size to fit my ziplock bags,
 and have enough space for a QR code and some text.
 - (ESD safe) ziplocks. Common sizes I use are:
@@ -44,7 +44,7 @@ Location: \<your csv>
 ```bash
 $ lprint devices # List available devices
 $ lprint drivers # List all supported printers
-$ lprint add -d <LPRINT_PRINTER_NAME> -v <URI_FROM_devices> -m <DRIVER_NAME>
+$ lprint add -d <LPRINT_PRINTER_NAME> -v "<URI_FROM_devices>" -m <DRIVER_NAME>
 $ sudo systemctl enable --now lprint.service
 ```
 Now you can navigate to `http://localhost:8000` (or the port you see in
@@ -62,7 +62,7 @@ To print the labels, you can either use gLabels GUI (one at a time), or
 generate all the labels in bulk and print them with lpr:
 ```bash
 $ glabels-3-batch gLabels_partsbox.glabels
-$ lrp output.pdf
+$ lpr -P <CUPS_PRINTER_NAME> output.pdf
 ```
 
 Other, "smarter" pdf print tools (e.g. Okular print dialog) might break the
